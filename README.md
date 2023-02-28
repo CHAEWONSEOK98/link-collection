@@ -3,7 +3,7 @@
 - action : react
 - css : tailwindcss
 - router : react-router-dom
-- state management : redux or recoil
+- state management : redux or recoil !
 
 ## front - 구현하고 싶은 기능
 
