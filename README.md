@@ -3,15 +3,18 @@
 - action : react
 - css : tailwindcss
 - router : react-router-dom
-- state management : redux or recoil !
+- state management : recoil
 
 ## front - 구현하고 싶은 기능
 
 - 홈 화면에서 폴더를 만들고, 그 폴더 안에 링크
+- localstorage를 사용하여 데이터 저장
+- 회원가입
 
 ## css - 구현하고 싶은 기능
 
-- 리스트 보기, 아이콘 보기
+- 페이지 보는 형식 : 리스트 형식, 아이콘 형식
+- 반응형
 
 <hr />
 
@@ -35,7 +38,14 @@ food page
 props로 데이터를 넘겨주는 형식은 비효율적 x
 useContext를 사용해도 좋지만 상태관리 라이브러리를 사용하고 싶음.
 
-- 큰 프로젝트를 진행할 땐 useContext를 사용하지 못함.
+- 나중에 큰 프로젝트를 진행할 땐 useContext를 사용하지 않음.
 - 상태관리 라이브러리를 알아보고 공부하고 싶음.
 
 redux, recoil 중에 공부해서 사용.
+
+<hr />
+redux > redux-react > redux-toolkit 으로 변화하는 과정 속에서 각각 공부해본 결과
+redux는 난해하고 복잡하다. 특히 데이터 통신을 다루는 부분에서의 thunk는 어렵고 복잡했다.
+분명 핵심은 상태관리를 위한 라이브러리지만 주객전도된 느낌? 그래서 나중에 redux의 필요성을 느낄 때 redux와 더불어 rtk query까지 같이 배워야겠다.
+
+현재 프로젝트는 크지 않고, 상태 관리가 필요하기 때문에 recoil 선택.
