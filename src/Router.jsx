@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Root from './Root';
-import Home from './components/Home';
-import Pages from './components/Pages';
+import MainPages from './pages/MainPages';
+import SubPages from './pages/SubPages';
+import LastPage from './pages/LastPage';
 
 const router = createBrowserRouter([
   {
@@ -10,11 +11,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <Home />,
+        element: <MainPages />,
       },
       {
-        path: '/:pageName',
-        element: <Pages />,
+        path: '/:subPagesName',
+        element: <SubPages />,
+      },
+      {
+        path: '/:subPagesName/:lastPage',
+        element: <LastPage />,
       },
     ],
   },

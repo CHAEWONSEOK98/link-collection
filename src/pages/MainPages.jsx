@@ -3,7 +3,7 @@ import { useRecoilValue, useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-const Home = () => {
+const MainPages = () => {
   const [mainPages, setMainPages] = useRecoilState(mainPagesState);
   const [pageName, setPageName] = useState('');
 
@@ -33,9 +33,9 @@ const Home = () => {
             className="font-bold mr-4 cursor-pointer"
             onClick={handleCreateClick}
           >
-            페이지생성
+            목록생성
           </h1>
-          <h1 className="font-bold mr-4 cursor-pointer">페이지삭제</h1>
+          <h1 className="font-bold mr-4 cursor-pointer">목록삭제</h1>
           <h1 className="font-bold mr-4 cursor-pointer">링크연결</h1>
           <h1 className="font-bold mr-4 cursor-pointer">메모</h1>
         </div>
@@ -63,4 +63,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MainPages;
