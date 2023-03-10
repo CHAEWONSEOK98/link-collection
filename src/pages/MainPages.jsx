@@ -52,6 +52,10 @@ const MainPages = () => {
     setUrl(e.target.value);
   };
 
+  const handleLinkDelete = (id) => {
+    setLinkConnect((prev) => prev.filter((element) => element.id !== id));
+  };
+
   return (
     <div className="max-w-[1440px] mx-auto w-full h-hull border-orange-400 border-4">
       <div className="absolute right-12 lg:right-40 top-[2.5rem]">
@@ -59,7 +63,9 @@ const MainPages = () => {
           <h1 className="font-bold mr-4 cursor-pointer">목록생성</h1>
           <h1 className="font-bold mr-4 cursor-pointer">목록삭제</h1>
           <h1 className="font-bold mr-4 cursor-pointer">링크연결</h1>
-          <h1 className="font-bold mr-4 cursor-pointer">메모</h1>
+          <Link to={`/note`}>
+            <h1 className="font-bold mr-4 cursor-pointer">메모</h1>
+          </Link>
         </div>
       </div>
 
@@ -79,38 +85,24 @@ const MainPages = () => {
         <section>
           <ul>
             {linkConnect.map((link) => (
-              <li>
-                <a href={`${link.url}`}>{link.linkName}</a>
+              <li className="border-yellow-300 border-2">
+                <a href={`${link.url}`} className="font-bold">
+                  {link.linkName}
+                </a>
+                <button
+                  className="font-bold ml-2"
+                  onClick={() => handleLinkDelete(link.id)}
+                >
+                  X
+                </button>
               </li>
             ))}
-          </ul>
-        </section>
-
-        <section>
-          <ul>
-            <li>메모1</li>
-            <li>메모2</li>
-            <li>메모3</li>
-            <li>메모4</li>
-            <li>메모5</li>
-            <li>메모6</li>
-            <li>메모7</li>
-            <li>메모8</li>
-
-            <li>메모1</li>
-            <li>메모2</li>
-            <li>메모3</li>
-            <li>메모4</li>
-            <li>메모5</li>
-            <li>메모6</li>
-            <li>메모7</li>
-            <li>메모8</li>
           </ul>
         </section>
       </main>
 
       <form
-        className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10 border-blue-400 border-4 hidden"
+        className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10 border-blue-400 border-4"
         onSubmit={handlepageSubmit}
       >
         <input

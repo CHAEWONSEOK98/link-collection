@@ -3,6 +3,7 @@ import Root from './Root';
 import MainPages from './pages/MainPages';
 import SubPages from './pages/SubPages';
 import LastPage from './pages/LastPage';
+import NotePage from './pages/NotePage';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/:subPagesName/:lastPage',
         element: <LastPage />,
+      },
+      {
+        path: '/note',
+        element: <NotePage />,
       },
     ],
   },

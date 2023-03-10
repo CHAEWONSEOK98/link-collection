@@ -13,7 +13,6 @@ const SubPages = () => {
             <h1 className="font-bold mr-4 cursor-pointer">목록생성</h1>
             <h1 className="font-bold mr-4 cursor-pointer">목록삭제</h1>
             <h1 className="font-bold mr-4 cursor-pointer">링크연결</h1>
-            <h1 className="font-bold mr-4 cursor-pointer">메모</h1>
           </div>
         </div>
       </div>
