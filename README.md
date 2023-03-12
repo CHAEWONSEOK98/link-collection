@@ -87,3 +87,29 @@ form이 많아짐에 따라 검증절차 또한 늘어난다.
 
 - 헤더에서 목록 생성, 목록 삭제, 사이트 추가 버튼을 누를 떄 form이 중복으로 활성화된다.
 - 헤더에서 하나의 버튼을 눌렀을 때 다른 버튼은 활성화되지 않도록 하고자 하여, disabled 속성을 사용.
+
+<hr />
+
+[에러사항발견]
+
+- pageDelete
+
+  const handlePageDeleteSubmit = (e) => {
+  e.preventDefault();
+  if (pageDeleteName.length === 0) return;
+  setMainPages((prev) =>
+  prev.filter((element) => element.pageName !== pageDeleteName)
+  );
+  setPageDeleteName('');
+  };
+
+  에러 -> / a a a / pageName이 a인 것을 다 삭제
+
+  페이지를 생성할 때 중복 목록 불허 or 삭제할 떄 분별해서 삭제
+
+  사용자 입장에서는 중복 페이지를 만들 일이 없어서 크게 문제는 없지만 기능 구현상 중복된 것이 만들어지거나 삭제되는 것보다는 사전에 차단하는 것이 문제를 야기하지 않음.
+
+  [에러사항해결]
+
+  - 페이지를 생성하여 map함수로 화면에 나타낼 때 id값 까지 같이 표현한다.
+  - 삭제하는 방법 filter, id 방식으로 통일.
