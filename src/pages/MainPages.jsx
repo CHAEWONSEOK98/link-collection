@@ -18,6 +18,8 @@ const MainPages = () => {
   const handlePageToggle = () => {
     setCreatePageToggle((prev) => !prev);
     setLinkConnectToggle(false);
+    setLinkName('');
+    setUrl('');
   };
 
   const handlepageSubmit = (e) => {
@@ -47,6 +49,7 @@ const MainPages = () => {
   const handleLinkConnectToggle = () => {
     setLinkConnectToggle((prev) => !prev);
     setCreatePageToggle(false);
+    setPageName('');
   };
 
   const handleCreateLinkSubmit = (e) => {
@@ -74,6 +77,16 @@ const MainPages = () => {
 
   const handleLinkDelete = (id) => {
     setLinkConnect((prev) => prev.filter((element) => element.id !== id));
+  };
+
+  // reset
+  const handleReset = () => {
+    setLinkName('');
+    setUrl('');
+    setLinkConnectToggle((prev) => false);
+
+    setPageName('');
+    setCreatePageToggle((prev) => false);
   };
 
   return (
@@ -156,49 +169,92 @@ const MainPages = () => {
       {/* page */}
       {createPageToggle && (
         <form
-          className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-10 border-blue-400 border-4"
+          className="bg-gray-50 w-[30rem] h-[20rem] absolute top-[43%] left-[50%] translate-x-[-50%] border-black border-[1px] shadow-md flex rounded-lg"
           onSubmit={handlepageSubmit}
         >
-          <input
-            value={pageName}
-            onChange={handlePageNameChange}
-            placeholder="페이지 이름"
-            className="outline-none"
-          />
-          <button>확인</button>
+          <div className="h-full w-full px-6">
+            <div className="flex justify-between items-center py-4 mt-4">
+              <span className="font-bold text-lg">목록 생성</span>
+              <button className="font-bold text-xl" onClick={handleReset}>
+                X
+              </button>
+            </div>
+            <div className="flex flex-col mt-10">
+              <label htmlFor="name" className=" text-gray-400 font-bold">
+                이름
+              </label>
+              <input
+                placeholder="목록 제목"
+                id="name"
+                className="h-12 py-[1px] px-[6px] mt-1 border-gray-400 border-2 rounded-md"
+                value={pageName}
+                onChange={handlePageNameChange}
+              />
+            </div>
+            <div className="flex justify-end mt-20 space-x-3">
+              <button
+                className="border-black border-[1px] px-7 py-[0.25rem] rounded-full text-sm"
+                onClick={handleReset}
+              >
+                취소
+              </button>
+              <button className=" px-7 py-[0.25rem] rounded-full text-white bg-gray-400 text-sm">
+                저장
+              </button>
+            </div>
+          </div>
         </form>
       )}
 
       {/* link */}
       {linkConnectToggle && (
         <form
-          className="absolute top-[43%] left-[50%] translate-x-[-50%] border-green-600 border-2 flex"
+          className="bg-gray-50 w-[30rem] h-[20rem] absolute top-[43%] left-[50%] translate-x-[-50%] border-black border-[1px] shadow-md flex rounded-lg"
           onSubmit={handleCreateLinkSubmit}
         >
-          <div>
-            <div>
-              <label htmlFor="name">이름</label>
+          <div className="h-full w-full px-6">
+            <div className="flex justify-between items-center py-4 mt-4">
+              <span className="font-bold text-lg">사이트 추가</span>
+              <button className="font-bold text-xl" onClick={handleReset}>
+                X
+              </button>
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="name" className=" text-gray-400 font-bold">
+                이름
+              </label>
               <input
+                placeholder="웹 사이트 제목"
                 id="name"
-                className=" h-[72px] py-[1px] px-[6px] border-red-300 border-2 outline-none"
+                className="h-12 py-[1px] px-[6px] mt-1 border-gray-400 border-2 rounded-md"
                 value={linkName}
                 onChange={handleLinkNameChange}
               />
             </div>
-            <div>
-              <label htmlFor="link">링크</label>
+            <div className="flex flex-col mt-6">
+              <label htmlFor="link" className="font-bold text-gray-500">
+                URL
+              </label>
               <input
+                placeholder="웹 사이트 주소"
                 id="link"
-                className=" h-[72px] py-[1px] px-[6px] border-red-300 border-2 outline-none"
+                className="h-12 py-[1px] px-[6px] mt-1 border-gray-400 border-2 rounded-md"
                 value={url}
                 onChange={handleUrlChange}
               />
             </div>
+            <div className="flex justify-end mt-4 space-x-3">
+              <button
+                className="border-black border-[1px] px-7 py-[0.25rem] rounded-full text-sm"
+                onClick={handleReset}
+              >
+                취소
+              </button>
+              <button className=" px-7 py-[0.25rem] rounded-full text-white bg-gray-400 text-sm">
+                저장
+              </button>
+            </div>
           </div>
-
-          <button className=" h-[72px] py-[1px] px-[6px] border-red-300 border-2">
-            완료
-          </button>
         </form>
       )}
     </div>
