@@ -3,7 +3,7 @@ import Header from './components/Header';
 
 const Root = () => {
   return (
-    <div>
+    <div className="h-screen dark:bg-black dark:text-white">
       <Header />
       <Outlet />
     </div>

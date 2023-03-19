@@ -1,7 +1,7 @@
 import { mainPagesState } from '../atoms/mainPagesState.js';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { mainPagesConnect } from '../atoms/mainPagesConnect.js';
 
 const MainPages = () => {
@@ -14,12 +14,15 @@ const MainPages = () => {
   const [url, setUrl] = useState('');
   const [linkConnectToggle, setLinkConnectToggle] = useState(false);
 
+  const inputRef = useRef();
+
   // page
   const handlePageToggle = () => {
     setCreatePageToggle((prev) => !prev);
     setLinkConnectToggle(false);
     setLinkName('');
     setUrl('');
+    inputRef.current.focus();
   };
 
   const handlepageSubmit = (e) => {
@@ -34,6 +37,7 @@ const MainPages = () => {
       },
     ]);
     setPageName('');
+    inputRef.current.focus();
   };
 
   const handlePageNameChange = (e) => {
@@ -65,6 +69,7 @@ const MainPages = () => {
     ]);
     setLinkName('');
     setUrl('');
+    inputRef.current.focus();
   };
 
   const handleLinkNameChange = (e) => {
@@ -117,12 +122,12 @@ const MainPages = () => {
             {mainPages.map((mainPage) => (
               <div className="relative group">
                 <Link to={`/${mainPage.pageName}`} key={mainPage.id}>
-                  <li className=" border-black border-2 font-bold  py-4 px-1 text-center rounded-xl list-none">
+                  <li className="dark:border-white border-black border-2 font-bold  py-4 px-1 text-center rounded-xl list-none">
                     {mainPage.pageName}
                   </li>
                 </Link>
                 <button
-                  className="absolute right-[-10px] top-[-12px] font-bold text-xs w-6 h-6 rounded-[100%] bg-slate-200 invisible group group-hover:visible "
+                  className="dark:text-black absolute right-[-10px] top-[-12px] font-bold text-xs w-6 h-6 rounded-[100%] bg-slate-200 invisible group group-hover:visible "
                   onClick={() => handlePageDelete(mainPage.id)}
                 >
                   X
@@ -152,7 +157,7 @@ const MainPages = () => {
                 </a>
 
                 <button
-                  className="absolute right-[-10px] top-[-12px] font-bold text-xs w-6 h-6 rounded-[100%] bg-slate-200 invisible group group-hover:visible "
+                  className="dark:text-black absolute right-[-10px] top-[-12px] font-bold text-xs w-6 h-6 rounded-[100%] bg-slate-200 invisible group group-hover:visible "
                   onClick={() => handleLinkDelete(link.id)}
                 >
                   X
@@ -169,7 +174,7 @@ const MainPages = () => {
       {/* page */}
       {createPageToggle && (
         <form
-          className="bg-gray-50 w-[30rem] h-[20rem] absolute top-[43%] left-[50%] translate-x-[-50%] border-black border-[1px] shadow-md flex rounded-lg"
+          className="dark:text-black bg-gray-50 w-[30rem] h-[20rem] absolute top-[33%] left-[50%] translate-x-[-50%] border-black border-[1px] shadow-md flex rounded-lg"
           onSubmit={handlepageSubmit}
         >
           <div className="h-full w-full px-6">
@@ -184,6 +189,7 @@ const MainPages = () => {
                 이름
               </label>
               <input
+                ref={inputRef}
                 placeholder="목록 제목"
                 id="name"
                 className="h-12 py-[1px] px-[6px] mt-1 border-gray-400 border-2 rounded-md"
@@ -193,7 +199,7 @@ const MainPages = () => {
             </div>
             <div className="flex justify-end mt-20 space-x-3">
               <button
-                className="border-black border-[1px] px-7 py-[0.25rem] rounded-full text-sm"
+                className=" border-black border-[1px] px-7 py-[0.25rem] rounded-full text-sm"
                 onClick={handleReset}
               >
                 취소
@@ -209,13 +215,13 @@ const MainPages = () => {
       {/* link */}
       {linkConnectToggle && (
         <form
-          className="bg-gray-50 w-[30rem] h-[20rem] absolute top-[43%] left-[50%] translate-x-[-50%] border-black border-[1px] shadow-md flex rounded-lg"
+          className="dark:text-black bg-gray-50 w-[30rem] h-[20rem] absolute top-[33%] left-[50%] translate-x-[-50%] border-black border-[1px] shadow-md flex rounded-lg"
           onSubmit={handleCreateLinkSubmit}
         >
           <div className="h-full w-full px-6">
             <div className="flex justify-between items-center py-4 mt-4">
-              <span className="font-bold text-lg">사이트 추가</span>
-              <button className="font-bold text-xl" onClick={handleReset}>
+              <span className=" font-bold text-lg">사이트 추가</span>
+              <button className=" font-bold text-xl" onClick={handleReset}>
                 X
               </button>
             </div>
@@ -224,6 +230,7 @@ const MainPages = () => {
                 이름
               </label>
               <input
+                ref={inputRef}
                 placeholder="웹 사이트 제목"
                 id="name"
                 className="h-12 py-[1px] px-[6px] mt-1 border-gray-400 border-2 rounded-md"
@@ -245,7 +252,7 @@ const MainPages = () => {
             </div>
             <div className="flex justify-end mt-4 space-x-3">
               <button
-                className="border-black border-[1px] px-7 py-[0.25rem] rounded-full text-sm"
+                className=" border-black border-[1px] px-7 py-[0.25rem] rounded-full text-sm"
                 onClick={handleReset}
               >
                 취소
