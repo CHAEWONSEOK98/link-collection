@@ -1,9 +1,4 @@
-import { useRecoilState } from 'recoil';
-import { mainPagesConnect } from '../atoms/mainPagesConnect';
-
-const Sites = () => {
-  const [linkConnect, setLinkConnect] = useRecoilState(mainPagesConnect);
-
+const Sites = ({ linkConnect, setLinkConnect }) => {
   //   link-delete
   const handleLinkDelete = (id) => {
     setLinkConnect((prev) => prev.filter((element) => element.id !== id));

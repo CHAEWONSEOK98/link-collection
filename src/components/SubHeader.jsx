@@ -1,16 +1,13 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { BsFillSunFill, BsMoonFill } from 'react-icons/bs';
 import { useRecoilState } from 'recoil';
-import { categoryToggleState } from '../atoms/mainPagesState';
-import { sitesToggleState } from '../atoms/mainPagesConnect';
-import { Link } from 'react-router-dom';
+import { siteToggleState } from '../atoms/subPagesState';
 
-const Header = () => {
+const SubHeader = () => {
   const [login, setLogin] = useState(false);
   const [theme, setTheme] = useState('light');
-  const [CategoryToggle, setCategoryToggle] =
-    useRecoilState(categoryToggleState);
-  const [siteToggle, setSiteToggle] = useRecoilState(sitesToggleState);
+  const [siteToggle, setSiteToggle] = useRecoilState(siteToggleState);
 
   const handleThemeSwitch = () => {
     const html = document.querySelector('html');
@@ -23,17 +20,10 @@ const Header = () => {
     }
   };
 
-  // category
-  const handleCategoryToggle = () => {
-    setCategoryToggle((prev) => !prev);
-    setSiteToggle((prev) => false);
-  };
-
-  // site
   const handleSiteToggle = () => {
     setSiteToggle((prev) => !prev);
-    setCategoryToggle((prev) => !prev);
   };
+
   return (
     <div>
       <div className="flex justify-between max-w-[1440px] mx-auto p-10">
@@ -42,21 +32,11 @@ const Header = () => {
         </h1>
         <div className="flex">
           <button
-            className="font-bold mr-4 cursor-pointer"
-            onClick={handleCategoryToggle}
-          >
-            목록 생성
-          </button>
-          <button
-            className="font-bold mr-4 cursor-pointer"
+            className="font-bold cursor-pointer"
             onClick={handleSiteToggle}
           >
             사이트 추가
           </button>
-          <Link to={`/note`}>
-            <h1 className="font-bold mr-4 cursor-pointer">메모</h1>
-          </Link>
-          {login && <h1 className="font-bold mr-4 cursor-pointer">로그인</h1>}
           <button className="ml-4" onClick={handleThemeSwitch}>
             {theme === 'light' ? <BsMoonFill /> : <BsFillSunFill />}
           </button>
@@ -66,4 +46,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default SubHeader;

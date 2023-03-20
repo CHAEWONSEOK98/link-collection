@@ -5,7 +5,7 @@ export const mainPagesConnect = atom({
   default: [],
 });
 
-export const siteToggleState = atom({
-  key: 'siteToggleState',
+export const sitesToggleState = atom({
+  key: 'sitesToggleState',
   default: false,
 });
