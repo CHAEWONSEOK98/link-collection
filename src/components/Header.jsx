@@ -32,7 +32,7 @@ const Header = () => {
   // site
   const handleSiteToggle = () => {
     setSiteToggle((prev) => !prev);
-    setCategoryToggle((prev) => !prev);
+    setCategoryToggle((prev) => false);
   };
   return (
     <div>

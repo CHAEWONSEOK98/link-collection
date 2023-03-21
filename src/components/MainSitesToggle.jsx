@@ -1,9 +1,8 @@
 import { useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { mainPagesConnect, sitesToggleState } from '../atoms/mainPagesConnect';
+import { sitesToggleState } from '../atoms/mainPagesConnect';
 
-const CreateSiteToggle = () => {
-  const [linkConnect, setLinkConnect] = useRecoilState(mainPagesConnect);
+const MainSitesToggle = ({ setLinkConnect }) => {
   const [siteToggle, setSiteToggle] = useRecoilState(sitesToggleState);
   const [linkName, setLinkName] = useState('');
   const [url, setUrl] = useState('');
@@ -97,4 +96,4 @@ const CreateSiteToggle = () => {
   );
 };
 
-export default CreateSiteToggle;
+export default MainSitesToggle;

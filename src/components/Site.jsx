@@ -1,4 +1,4 @@
-const Sites = ({ linkConnect, setLinkConnect }) => {
+const Site = ({ linkConnect, setLinkConnect }) => {
   //   link-delete
   const handleLinkDelete = (id) => {
     setLinkConnect((prev) => prev.filter((element) => element.id !== id));
@@ -38,4 +38,4 @@ const Sites = ({ linkConnect, setLinkConnect }) => {
   );
 };
 
-export default Sites;
+export default Site;

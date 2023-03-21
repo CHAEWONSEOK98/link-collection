@@ -1,9 +1,8 @@
 import { useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { categoryToggleState, mainPagesState } from '../atoms/mainPagesState';
+import { categoryToggleState } from '../atoms/mainPagesState';
 
-const CreateCategoryToggle = () => {
-  const [mainPages, setMainPages] = useRecoilState(mainPagesState);
+const CategoryToggle = ({ setMainPages }) => {
   const [createCategoryToggle, setCreateCategoryToggle] =
     useRecoilState(categoryToggleState);
   const [pageName, setPageName] = useState('');
@@ -80,4 +79,4 @@ const CreateCategoryToggle = () => {
   );
 };
 
-export default CreateCategoryToggle;
+export default CategoryToggle;

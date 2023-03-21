@@ -1,6 +1,9 @@
+import { useRecoilState } from 'recoil';
+import { siteToggleState } from '../atoms/subPagesState';
 import { useRef, useState } from 'react';
 
-const Toggle = ({ setLinkConnect, siteToggle, setSiteToggle }) => {
+const SubSitesToggle = ({ setLinkConnect }) => {
+  const [siteToggle, setSiteToggle] = useRecoilState(siteToggleState);
   const [linkName, setLinkName] = useState('');
   const [url, setUrl] = useState('');
 
@@ -9,6 +12,7 @@ const Toggle = ({ setLinkConnect, siteToggle, setSiteToggle }) => {
   const handleCreateLinkSubmit = (e) => {
     e.preventDefault();
     if (url.length < 10 || linkName.length === 0) return;
+
     setLinkConnect((prev) => [
       ...prev,
       {
@@ -17,6 +21,7 @@ const Toggle = ({ setLinkConnect, siteToggle, setSiteToggle }) => {
         id: Math.random(),
       },
     ]);
+
     setLinkName('');
     setUrl('');
     inputRef.current.focus();
@@ -35,6 +40,7 @@ const Toggle = ({ setLinkConnect, siteToggle, setSiteToggle }) => {
     setUrl('');
     setSiteToggle((prev) => false);
   };
+
   return (
     <div>
       {siteToggle && (
@@ -92,4 +98,4 @@ const Toggle = ({ setLinkConnect, siteToggle, setSiteToggle }) => {
   );
 };
 
-export default Toggle;
+export default SubSitesToggle;

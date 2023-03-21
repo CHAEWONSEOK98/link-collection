@@ -1,20 +1,11 @@
-import { useParams } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { subPagesState } from '../atoms/subPagesState';
-
 import SubHeader from '../components/SubHeader';
-import SubToggle from '../components/SubToggle';
-import Sites from '../components/Sites';
+import SubHome from '../components/SubHome';
 
 const SubPages = () => {
-  let { subPagesName } = useParams();
-  const [linkConnect, setLinkConnect] = useRecoilState(subPagesState);
-
   return (
     <div>
       <SubHeader />
-      <Sites linkConnect={linkConnect} setLinkConnect={setLinkConnect} />
-      <SubToggle />
+      <SubHome />
     </div>
   );
 };

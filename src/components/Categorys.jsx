@@ -1,9 +1,16 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { mainPagesState } from '../atoms/mainPagesState';
+
+import CategoryToggle from './CategoryToggle.jsx';
 
 const Categorys = () => {
-  const [mainPages, setMainPages] = useRecoilState(mainPagesState);
+  const [mainPages, setMainPages] = useState(
+    () => JSON.parse(window.localStorage.getItem('category')) || []
+  );
+
+  useEffect(() => {
+    window.localStorage.setItem('category', JSON.stringify(mainPages));
+  }, [mainPages]);
 
   // pageDelete
   const handlePageDelete = (id) => {
@@ -12,6 +19,7 @@ const Categorys = () => {
 
   return (
     <div>
+      <CategoryToggle setMainPages={setMainPages} />
       {mainPages.length > 0 && (
         <section className="relative rounded-xl p-4 mt-16">
           <ul className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 xl:grid-cols-10 gap-4">
