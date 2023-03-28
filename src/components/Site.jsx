@@ -10,12 +10,12 @@ const Site = ({ linkConnect, setLinkConnect }) => {
           <ul className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4">
             {linkConnect.map((link) => (
               <li
-                className="relative border-gray-500 border-2 text-center rounded-lg h-20 group"
+                className="dark:border-white relative border-black border-2 text-center rounded-lg h-20 group"
                 key={link.id}
               >
                 <a
                   href={`${link.url}`}
-                  className=" font-bold text-[#848484] flex justify-center h-full items-center"
+                  className="dark:text-white font-bold text-black flex justify-center h-full items-center"
                 >
                   {link.linkName.substring(0, 18)}
                 </a>
@@ -29,7 +29,7 @@ const Site = ({ linkConnect, setLinkConnect }) => {
               </li>
             ))}
           </ul>
-          <span className="absolute top-[-35px]  font-bold text-lg text-[#848484]">
+          <span className="dark:text-white absolute top-[-35px]  font-bold text-lg text-black">
             사이트
           </span>
         </section>

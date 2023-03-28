@@ -3,7 +3,7 @@ import SubHome from '../components/SubHome';
 
 const SubPages = () => {
   return (
-    <div>
+    <div className="max-w-[1600px] mx-auto w-full h-hull">
       <SubHeader />
       <SubHome />
     </div>

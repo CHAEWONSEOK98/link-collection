@@ -2,8 +2,6 @@ import { createBrowserRouter } from 'react-router-dom';
 import Root from './Root';
 import MainPages from './pages/MainPages';
 import SubPages from './pages/SubPages';
-import NotePage from './pages/NotePage';
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -16,10 +14,6 @@ const router = createBrowserRouter([
       {
         path: '/:subPagesName',
         element: <SubPages />,
-      },
-      {
-        path: '/note',
-        element: <NotePage />,
       },
     ],
   },

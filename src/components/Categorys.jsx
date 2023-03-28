@@ -22,7 +22,7 @@ const Categorys = () => {
       <CategoryToggle setMainPages={setMainPages} />
       {mainPages.length > 0 && (
         <section className="relative rounded-xl p-4 mt-16">
-          <ul className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 xl:grid-cols-10 gap-4">
+          <ul className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 xl:grid-cols-8 gap-4">
             {mainPages.map((mainPage) => (
               <div className="relative group">
                 <Link to={`/${mainPage.pageName}`} key={mainPage.id}>

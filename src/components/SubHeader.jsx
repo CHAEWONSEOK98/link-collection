@@ -5,7 +5,6 @@ import { useRecoilState } from 'recoil';
 import { siteToggleState } from '../atoms/subPagesState';
 
 const SubHeader = () => {
-  const [login, setLogin] = useState(false);
   const [theme, setTheme] = useState('light');
   const [siteToggle, setSiteToggle] = useRecoilState(siteToggleState);
 

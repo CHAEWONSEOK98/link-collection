@@ -6,7 +6,6 @@ import { sitesToggleState } from '../atoms/mainPagesConnect';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const [login, setLogin] = useState(false);
   const [theme, setTheme] = useState('light');
   const [CategoryToggle, setCategoryToggle] =
     useRecoilState(categoryToggleState);
@@ -53,10 +52,7 @@ const Header = () => {
           >
             사이트 추가
           </button>
-          <Link to={`/note`}>
-            <h1 className="font-bold mr-4 cursor-pointer">메모</h1>
-          </Link>
-          {login && <h1 className="font-bold mr-4 cursor-pointer">로그인</h1>}
+
           <button className="ml-4" onClick={handleThemeSwitch}>
             {theme === 'light' ? <BsMoonFill /> : <BsFillSunFill />}
           </button>
